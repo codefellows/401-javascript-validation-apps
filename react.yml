@@ -1,0 +1,26 @@
+name: MasterDeployCI
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x]
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install Packages
+      run: npm install
+    - name: Deploy to GH Pages
+      run: |
+        git config --global user.email "highlander.44@gmail.com"
+        git config --global user.name "johncokos"
+        git remote set-url origin https://e103558734e5b145ed4790637b389260ee6a8f3d@git@github.com:codefellows/401-javascript-validation-apps.git
+        cd class-18
+        npm run deploy
