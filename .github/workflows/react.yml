@@ -23,4 +23,5 @@ jobs:
         git config --global user.name "johncokos"
         git remote set-url origin https://e103558734e5b145ed4790637b389260ee6a8f3d@git@github.com:codefellows/401-javascript-validation-apps.git
         cd class-18
+        npm ci
         npm run deploy
